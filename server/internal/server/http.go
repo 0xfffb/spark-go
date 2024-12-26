@@ -11,7 +11,7 @@ import (
 type HTTPServer struct {
 	engine        *gin.Engine
 	clientManager *manager.ClientManager
-}
+}	
 
 func NewHTTPServer(clientManager *manager.ClientManager) *HTTPServer {
 	clientService := service.NewClientService(clientManager)

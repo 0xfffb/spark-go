@@ -30,10 +30,11 @@ func (h *ClientHandler) SendMessage(c *gin.Context) {
 		return
 	}
 
-	if err := h.clientService.SendMessage(clientID, message.Command, message.Data); err != nil {
+	response, err := h.clientService.SendMessage(clientID, message.Command, message.Data)
+	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"status": "message sent"})
+	c.JSON(http.StatusOK, gin.H{"status": response})
 }
